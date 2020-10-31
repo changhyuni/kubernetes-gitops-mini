@@ -5,4 +5,4 @@
 
 
 ### Architecture
-![ex_screenshot](./flow.png)
+![ex_screenshot](./gitops.png)
