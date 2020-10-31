@@ -1,4 +1,4 @@
-# GitOps-CI/CD Kubernetes and Mornitering
+# GitOps-CI/CD Kubernetes and Monitoring
 ---
 ### Overview
 
