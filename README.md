@@ -11,3 +11,11 @@
 
 ### Architecture
 ![ex_screenshot](./gitops.png)
+
+### Objects
+* Nginx-Ingress-Controller
+* Metric-Server
+* Prometheus
+* Grafana
+* Jenkins
+* ArgoCD
