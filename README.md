@@ -13,7 +13,7 @@
 ![ex_screenshot](./gitops.png)
 
 ### AWS EKS Config
-AWS EKS Managed로 구축 하고 비용관리를 위해 Spot Instance를 사용합니다. <Node Termination Handler> 를 필수적으로 설치합니다. Maanaged 이기때문에 <Cluster-Autoscaler> 는 설치하지 않습니다. 
+AWS EKS Managed로 구축 하고 비용관리를 위해 Spot Instance를 사용합니다. 'Node Termination Handler' 를 필수적으로 설치합니다. Maanaged 이기때문에 'luster-Autoscaler' 는 설치하지 않습니다. 
 
 ### Objects
 * Nginx-Ingress-Controller, Metric-Server, Node Termination Handler
