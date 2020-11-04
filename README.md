@@ -6,7 +6,7 @@
 * [GITOPS Repo](https://github.com/changhyuni/kubernetes-manifest)
 * [Jenkinsfile Repo](https://github.com/changhyuni/jenkins-ecr)
 * [SOURCE Repo](https://github.com/changhyuni/django-file-server)
-* Terraform
+* [Terraform](https://github.com/changhyuni/kubernetes-gitops-terraform/tree/main/terraform)
 
 
 ### Architecture
