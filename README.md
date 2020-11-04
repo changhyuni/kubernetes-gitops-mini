@@ -18,4 +18,4 @@ AWS EKS Managed로 구축 하고 비용관리를 위해 Spot Instance를 사용�
 ### Objects
 * Nginx-Ingress-Controller, Metric-Server, Node Termination Handler
 * Prometheus, Grafana
-* Jenkins, ArgoCD, ArgoCD Rollouts Plugin
+* Jenkins, ArgoCD, ArgoCD Rollouts
