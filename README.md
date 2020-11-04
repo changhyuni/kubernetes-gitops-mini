@@ -16,6 +16,6 @@
 AWS EKS Managed로 구축 하고 비용관리를 위해 Spot Instance를 사용합니다. 'Node Termination Handler', 'Cluster-Autoscaler' 를 필수적으로 설치합니다.
 
 ### Objects
-* Nginx-Ingress-Controller, Metric-Server, Node Termination Handler
+* Nginx-Ingress-Controller, Metric-Server, Node Termination Handler, Cluster-AutoScaler
 * Prometheus, Grafana
 * Jenkins, ArgoCD, ArgoCD Rollouts
