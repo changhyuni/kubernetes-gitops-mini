@@ -1,13 +1,13 @@
 ###################  Create VPC   ###################
 module "vpc" {
-  source = "git::https://github.com/SeungHyeonShin/terraform.git//modules/eks-vpc?ref=v1.2.0"
+  source = "editing"
 
   aws_vpc_cidr        = "192.168.0.0/16"
   aws_private_subnets = ["192.168.1.0/24", "192.168.2.0/24"]
   aws_public_subnets  = ["192.168.11.0/24", "192.168.12.0/24"]
   aws_region          = local.region
   aws_azs             = ["ap-northeast-2a", "ap-northeast-2c"]
-  aws_default_name    = "seunghyeon"
+  aws_default_name    = "changman"
   global_tags = {
     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
   }
@@ -15,7 +15,7 @@ module "vpc" {
 
 ###################  Create EKS   ###################
 module "eks" {
-  source          = "git::https://github.com/terraform-aws-modules/terraform-aws-eks.git?ref=v12.1.0"
+  source          = "editing"
   cluster_name    = local.cluster_name
   vpc_id          = module.vpc.aws_vpc_id
   subnets         = module.vpc.private_subnets
@@ -30,7 +30,7 @@ module "eks" {
       name                = "on-demand-1"
       instance_type       = "m4.large"
       asg_max_size        = 3
-      key_name         = aws_key_pair.seunghyeon-eks.key_name
+      key_name         = aws_key_pair.changman-eks.key_name
       kubelet_extra_args  = "--node-labels=spot=false"
       suspended_processes = ["AZRebalance"]
       additional_tags = {
@@ -50,14 +50,14 @@ module "eks" {
       spot_instance_pools     = 5
       asg_max_size            = 5
       asg_desired_capacity    = 1
-      key_name         = aws_key_pair.seunghyeon-eks.key_name
+      key_name         = aws_key_pair.changman-eks.key_name
       kubelet_extra_args      = "--node-labels=node.kubernetes.io/lifecycle=spot"
       additional_tags = {
         "k8s.io/cluster-autoscaler/enabled" = "true"
       }
 
       source_security_group_ids = [
-        aws_security_group.seunghyeon-bastion-sg.id
+        aws_security_group.changman-bastion-sg.id
       ]
     }
   ]
@@ -84,7 +84,7 @@ resource "aws_security_group" "seunghyeon-bastion-sg" {
   }
 
   tags = {
-    "Name" = "seunghyeon-EKS-bastion-sg"
+    "Name" = "changman-EKS-bastion-sg"
   }
 }
 resource "aws_instance" "bastion" {
@@ -97,21 +97,20 @@ resource "aws_instance" "bastion" {
   ]
 
   tags = {
-    "Name" = "seunghyeon-EKS-bastionHost"
+    "Name" = "changman-EKS-bastionHost"
   }
 }
 
 ############   Local Variable  ######################
 locals {
-  cluster_name = "seunghyeon-eks-cluster"
+  cluster_name = "changman-eks-cluster"
   region       = "ap-northeast-2"
 }
 
 ############   K8S Objects Modules ###################
 module "k8s" {
-  source = "git::https://github.com/SeungHyeonShin/k8s-terraform-modules.git//kube-object?ref=v1.1.0"
+  source = "editing"
   config_path = "~/.kube/kubeconfig_${local.cluster_name}"
-
   node-handler-path = "../kube-objects/node-handler/values.yaml"
   jenkins-path = "../kube-objects/cicd/jenkins/values.yaml"
   argo-path = "../kube-objects/cicd/argo/values.yaml"
