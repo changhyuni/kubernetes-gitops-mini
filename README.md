@@ -1,7 +1,8 @@
 # GitOps-CI/CD Kubernetes and Monitoring
 
 ### Overview
-Jenkins -> Docker build -> ECR Push
+* Jenkins -> Docker build -> ECR Push
+* Helm Chart -> ArgoCD
 
 
 * [GITOPS Repo](https://github.com/changhyuni/kubernetes-manifest)
